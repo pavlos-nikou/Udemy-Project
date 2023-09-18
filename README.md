@@ -22,6 +22,7 @@ A commenting and rating system for users to share their thoughts and experiences
 Course Project Details:
 
 Course Instructor: Colt Steele
+
 Udemy Course Link: https://www.udemy.com/course/the-web-developer-bootcamp/
 
 Key Features:
