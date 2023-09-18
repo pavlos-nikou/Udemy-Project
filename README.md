@@ -1,8 +1,7 @@
-Project Name:
-
 Summer Camp Booking Website
+<h2>Summer Camp Booking Website</h2>
 
-Course Information:
+<h2>Course Information</h2>
 
 Course Title: The Web Developer Bootcamp 2023
 Duration: 74 hours
@@ -12,9 +11,7 @@ Project Description:
 The Summer Camp Booking Website is the result of completing The Web Developer Bootcamp 2023 on Udemy.
 This full-stack web application allows users to explore and apply to various summer camps, leave comments, and rate their experiences.
 
-<br>
-
-Key Features:
+<h2>Key Features:</h2>
 
 A dynamic and responsive front-end interface built with HTML5, CSS3, Flexbox, and responsive design techniques.
 
@@ -47,6 +44,7 @@ File upload and image storage functionality.
 Implementation of maps and geocoding for location-based features.
 
 Course Project Details:
+<h2>Course Project Details:</h2>
 
 Course Instructor: Colt Steele
 
