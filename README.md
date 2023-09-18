@@ -1,7 +1,6 @@
-Summer Camp Booking Website
-<h2>Summer Camp Booking Website</h2>
+<h1>Summer Camp Booking Website</h1>
 
-<h2>Course Information</h2>
+<h2>Course Information:</h2>
 
 Course Title: The Web Developer Bootcamp 2023
 Duration: 74 hours
