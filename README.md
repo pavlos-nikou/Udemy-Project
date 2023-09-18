@@ -14,19 +14,6 @@ This full-stack web application allows users to explore and apply to various sum
 
 Key Features:
 
-A dynamic and responsive front-end interface built with HTML, CSS, JavaScript, and Bootstrap.
-A server-side component powered by MongoDB for data storage and retrieval.
-User authentication and authorization to manage camp applications and comments.
-A commenting and rating system for users to share their thoughts and experiences.
-
-Course Project Details:
-
-Course Instructor: Colt Steele
-
-Udemy Course Link: https://www.udemy.com/course/the-web-developer-bootcamp/
-
-Key Features:
-
 A dynamic and responsive front-end interface built with HTML5, CSS3, Flexbox, and responsive design techniques.
 
 Modern JavaScript practices (ES6, ES2018) for creating interactive and asynchronous web applications.
@@ -56,3 +43,9 @@ Integration with cloud databases and storage solutions.
 File upload and image storage functionality.
 
 Implementation of maps and geocoding for location-based features.
+
+Course Project Details:
+
+Course Instructor: Colt Steele
+
+Udemy Course Link: https://www.udemy.com/course/the-web-developer-bootcamp/
