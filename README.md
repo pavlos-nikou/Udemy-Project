@@ -2,9 +2,9 @@
 
 <h2>Course Information:</h2>
 
-Course Title: The Web Developer Bootcamp 2023
-Duration: 74 hours
-Topics Covered: HTML, CSS, JavaScript, Bootstrap, MongoDB, React
+Course Title: The Web Developer Bootcamp 2023<br>
+Duration: 74 hours<br>
+Topics Covered: HTML, CSS, JavaScript, Bootstrap, MongoDB, React<br>
 Project Description:
 
 The Summer Camp Booking Website is the result of completing The Web Developer Bootcamp 2023 on Udemy.
