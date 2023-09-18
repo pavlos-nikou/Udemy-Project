@@ -12,7 +12,7 @@ Project Description:
 The Summer Camp Booking Website is the result of completing The Web Developer Bootcamp 2023 on Udemy.
 This full-stack web application allows users to explore and apply to various summer camps, leave comments, and rate their experiences.
 
-<h2></h2>
+<h2>Key Features:</h2>
 
 A dynamic and responsive front-end interface built with HTML5, CSS3, Flexbox, and responsive design techniques.
 
