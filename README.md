@@ -12,21 +12,24 @@ This full-stack web application allows users to explore and apply to various sum
 
 <h2>Key Features:</h2>
 
-A dynamic and responsive front-end interface built with HTML5, CSS3, Flexbox, and responsive design techniques.<br>
-Modern JavaScript practices (ES6, ES2018) for creating interactive and asynchronous web applications.<br>
-Implementation of AJAX and single-page application concepts.<br>
-Utilization of popular CSS frameworks including Bootstrap 4 and 5, Semantic UI, and Bulma.<br>
-DOM manipulation for creating dynamic web content.<br>
-Command-line proficiency using Unix commands.<br>
-Server-side development with Node.js and Express.js.<br>
-Incorporation of templating and REST principles.<br>
-Handling databases with both SQL and NoSQL options, including MongoDB.<br>
-Expertise in database associations, schema design, and Mongoose.<br>
-Authentication, authorization, and security considerations.<br>
-Deployment practices for web applications.<br>
-Integration with cloud databases and storage solutions.<br>
-File upload and image storage functionality.<br>
-Implementation of maps and geocoding for location-based features.<br>
+<ul>
+  <li>A dynamic and responsive front-end interface built with HTML5, CSS3, Flexbox, and responsive design techniques.</li>
+  <li>Modern JavaScript practices (ES6, ES2018) for creating interactive and asynchronous web applications.</li>
+  <li>Implementation of AJAX and single-page application concepts.</li>
+  <li>Utilization of popular CSS frameworks including Bootstrap 4 and 5, Semantic UI, and Bulma.</li>
+  <li>DOM manipulation for creating dynamic web content.</li>
+  <li>Command-line proficiency using Unix commands.</li>
+  <li>Server-side development with Node.js and Express.js.</li>
+  <li>Incorporation of templating and REST principles.</li>
+  <li>Handling databases with both SQL and NoSQL options, including MongoDB.</li>
+  <li>Expertise in database associations, schema design, and Mongoose.</li>
+  <li>Authentication, authorization, and security considerations.</li>
+  <li>Deployment practices for web applications.</li>
+  <li>Integration with cloud databases and storage solutions.</li>
+  <li>File upload and image storage functionality.</li>
+  <li>Implementation of maps and geocoding for location-based features.</li>
+</ul>
+
 
 <h2>Course Project Details:</h2>
 
