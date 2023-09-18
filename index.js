@@ -21,6 +21,9 @@ const Review = require("./models/review");
 
 const campgrounds = require("./routes/campgrounds");
 const reviews = require("./routes/reviews");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user");
 
 
 mongoose.connect("mongodb+srv://under:construction@ucdatabase.f09kl.mongodb.net/Yelpcamp")
@@ -41,7 +44,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride("_method"));
 
-
 const sessiosConfig = {
     secret: "thisshouldbeabettersecret!",
     resave: false,
@@ -55,9 +57,16 @@ const sessiosConfig = {
 app.use(session(sessiosConfig));
 app.use(flash());
 
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
-app.use((req,res,next)=>{
+
+app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
@@ -65,6 +74,15 @@ app.use((req,res,next)=>{
 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/review", reviews);
+
+app.get("/newUser", async (req, res) => {
+    const user = new User({ 
+        email: "sasdfs@gmail.com",
+        username: "helldfgsdfgso"
+    });
+    const newUser = await User.register(user,"help me");
+    res.send(newUser);
+})
 
 app.get("/", (req, res) => {
     res.render("home");
