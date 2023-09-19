@@ -18,6 +18,9 @@ const Campground = require("./models/campground");
 const Review = require("./models/review");
 const User = require("./models/user");
 
+// middleware
+
+
 // router
 const campgroundsRoutes = require("./routes/campgrounds");
 const reviewsRoutes = require("./routes/reviews");
