@@ -6,16 +6,16 @@ const flash = require("connect-flash");
 const ejsmate = require("ejs-mate");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError");
-const catchAsync = require("./utils/catchAsync");
+// const catchAsync = require("./utils/catchAsync");
 
 const mongoose = require("mongoose");
 
-// models and schemas
-const { campgroundVSchema } = require("./utils/joiSchemas");
-const { reviewVSchema } = require("./utils/joiSchemas");
+// // models and schemas
+// const { campgroundVSchema } = require("./utils/joiSchemas");
+// const { reviewVSchema } = require("./utils/joiSchemas");
 
-const Campground = require("./models/campground");
-const Review = require("./models/review");
+// const Campground = require("./models/campground");
+// const Review = require("./models/review");
 const User = require("./models/user");
 
 // middleware

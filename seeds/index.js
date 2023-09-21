@@ -33,6 +33,7 @@ const seedDB = async () => {
             title: `${descriptors[Math.floor(Math.random() * places.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             image: "https://source.unsplash.com/collection/483251",
+            author: "6509ca25e66e8833d329c120",
             price: priceRandom,
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero praesentium iste rerum asperiores hic perspiciatis saepe facere voluptas recusandae molestiae"
         })
