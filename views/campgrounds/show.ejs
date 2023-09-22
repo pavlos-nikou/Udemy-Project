@@ -43,6 +43,7 @@
 
         </div>
         <div class="col-6">
+            <% if(currentUser){ %>
             <form action="/campgrounds/<%= campground._id%>/review" class="mb-3 validated-form" method="post"
                 novalidate>
                 <div class="mb-3">
@@ -58,6 +59,7 @@
                 </div>
                 <button class="btn btn-success">Submit</button>
             </form>
+            <% } %>
             <% campground.reviews.forEach(review=>{%>
                 <div class="card mb-3" style="position: relative;">
                     <div class="card-body">

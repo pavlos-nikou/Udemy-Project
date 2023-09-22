@@ -10,6 +10,7 @@ router.post("/", validateReview, async (req, res, next) => {
     console.log(req.params);
     req.flash("success","Your review was submitted successfully!");
     const review = new Review(req.body.review);
+    // review.author = req.user;
     campground.reviews.push(review);
     await review.save();
     await campground.save();
