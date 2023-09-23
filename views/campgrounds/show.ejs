@@ -67,13 +67,17 @@
                         </p>
                         <p>Review: <%= review.body %>
                         </p>
-                        <form action="/campgrounds/<%= campground._id %>/review/<%= review._id%>?_method=DELETE"
-                            method="POST">
-                            <button
-                                style="position: absolute;top: 1em;right: 1em;color: red;border-color:transparent;background-color: transparent;">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                        <p class="blockquote-footer"><%= review.author.username %></p>
+                        <% if (currentUser && review.author._id.equals(currentUser._id)) { %>
+                            <form action="/campgrounds/<%= campground._id %>/review/<%= review._id%>?_method=DELETE"
+                                method="POST">
+                                <button
+                                    style="position: absolute;top: 1em;right: 1em;color: red;border-color:transparent;background-color: transparent;">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        <% } %>
+                        
                     </div>
                 </div>
                 <%}) %>

@@ -1,5 +1,6 @@
 const { campgroundVSchema, reviewVSchema } = require("./utils/joiSchemas");
 const Campground = require("./models/campground");
+const Review = require('./models/review');
 const ExpressError = require("./utils/ExpressError");
 
 
@@ -48,6 +49,16 @@ module.exports.authorize = async (req, res, next) => {
     if (!campground.author.equals(req.user._id)) {
         req.flash("error", "You do not have access to that! :(")
         res.redirect(`/campgrounds/${id}`)
+    }
+    next();
+}
+
+module.exports.authorizeReview = async (req, res, next) => {
+    const {id, reviewId} = req.params;
+    const review = await Review.findById(reviewId);
+    if (!review.author.equals(req.user._id)) {
+        req.flash("error", "You do not have access to that! :(")
+        return res.redirect(`/campgrounds/${id}`)
     }
     next();
 }
