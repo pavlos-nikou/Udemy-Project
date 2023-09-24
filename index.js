@@ -10,12 +10,6 @@ const ExpressError = require("./utils/ExpressError");
 
 const mongoose = require("mongoose");
 
-// // models and schemas
-// const { campgroundVSchema } = require("./utils/joiSchemas");
-// const { reviewVSchema } = require("./utils/joiSchemas");
-
-// const Campground = require("./models/campground");
-// const Review = require("./models/review");
 const User = require("./models/user");
 
 // middleware
