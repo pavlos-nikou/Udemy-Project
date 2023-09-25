@@ -6,14 +6,10 @@ const flash = require("connect-flash");
 const ejsmate = require("ejs-mate");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError");
-// const catchAsync = require("./utils/catchAsync");
 
 const mongoose = require("mongoose");
 
 const User = require("./models/user");
-
-// middleware
-
 
 // router
 const campgroundsRoutes = require("./routes/campgrounds");
@@ -23,7 +19,6 @@ const registerRoutes = require('./routes/users');
 // for authentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const userRoutes = require("./models/user");
 
 // connect to database
 mongoose.connect("mongodb+srv://under:construction@ucdatabase.f09kl.mongodb.net/Yelpcamp")
