@@ -5,7 +5,8 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const router = express.Router();
 const multer = require('multer');
-const upload = multer({ dest: "uploads/"})
+const { storage } = require("../cloudinary");
+const upload = multer({storage});
 
 const catchAsync = require("../utils/catchAsync");
 const Campground = require("../models/campground");
@@ -18,8 +19,13 @@ router.get("/", catchAsync(index));
 router.route("/new")
     .get(isLoggedIn, newCampgroundForm)
     // .post(isLoggedIn, validateCampground, catchAsync(newCampground));
-    .post(upload.single("image"),(req, res) => {
-        res.send(req.file)
+    .post(upload.single("image"), (req, res) => {
+        try {
+            res.send(req.file);
+        } catch (error) {
+            
+        }
+        
     })
 
 router.route("/:id")
