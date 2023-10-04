@@ -22,7 +22,7 @@ router.route("/new")
 
 router.route("/:id")
     .get(catchAsync(viewCampground))
-    .put(isLoggedIn, authorize, validateCampground, catchAsync(editCampground))
+    .put(isLoggedIn, authorize, upload.array("image"), validateCampground, catchAsync(editCampground))
     .delete(isLoggedIn, authorize, catchAsync(deleteCampground));
 
 router.get("/:id/edit", isLoggedIn, authorize, catchAsync(editCampgroundForm));
