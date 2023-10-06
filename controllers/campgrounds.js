@@ -1,5 +1,8 @@
 const Campground = require('../models/campground');
-const {cloudinary} = require("../cloudinary");
+const { cloudinary } = require("../cloudinary");
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapBoxToken = process.env.MAPBOX_TOKEN;
+const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
 
 
 module.exports.index = async (req, res, next) => {
@@ -26,13 +29,20 @@ module.exports.newCampgroundForm = (req, res) => {
 }
 
 module.exports.newCampground = async (req, res, next) => {
-    const newCamp = new Campground(req.body.campground);
-    newCamp.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    newCamp.author = req.user._id;
-    await newCamp.save();
-    console.log(newCamp);
-    req.flash("success", "successfully made a new campground!");
-    res.redirect(`/campgrounds/${newCamp._id}`)
+    const geodata = await geocoder.forwardGeocode({
+        query: req.body.campground.location,
+        limit: 1
+    }).send();
+    // console.log(geodata.body.features[0].geometry);
+    res.send(geodata.body.features[0].geometry.coordinates);
+    // res.send("ok")
+    // const newCamp = new Campground(req.body.campground);
+    // newCamp.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    // newCamp.author = req.user._id;
+    // await newCamp.save();
+    // console.log(newCamp);
+    // req.flash("success", "successfully made a new campground!");
+    // res.redirect(`/campgrounds/${newCamp._id}`)
 }
 
 module.exports.editCampgroundForm = async (req, res, next) => {
@@ -56,7 +66,7 @@ module.exports.editCampground = async (req, res, next) => {
         for (const filename of req.body.deleteImages) {
             await cloudinary.uploader.destroy(filename);
         }
-        await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages} } } });
+        await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } });
     }
     res.redirect(`/campgrounds/${campground._id}`);
 }
