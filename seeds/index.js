@@ -4,52 +4,99 @@ const cities = require("./cities")
 const { places, descriptors } = require("./seedHelpers")
 
 mongoose.connect("mongodb+srv://under:construction@ucdatabase.f09kl.mongodb.net/Yelpcamp")
-    .then(() => {
-        console.log("connected yo db")
-    })
-    .catch(error => {
-        console.log(error)
-    })
+  .then(() => {
+    console.log("connected yo db")
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
 const getRandomImage = () => {
-    url = "https://source.unsplash.com/collection/483251"
-    fetch(url).then(function(response) {
-        return response.json();
-      }).then(function(data) {
-        console.log(data);
-      }).catch(function() {
-        console.log("Booo");
-      });
+  url = "https://source.unsplash.com/collection/483251"
+  fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    console.log(data);
+  }).catch(function () {
+    console.log("Booo");
+  });
 }
 
 const seedDB = async () => {
-    await Campground.deleteMany({});
-    const c = new Campground({ title: "purple field" })
-    for (let i = 0; i < 50; i++) {
-        const random1000 = Math.floor(Math.random() * 1000)
-        priceRandom = Math.floor(Math.random() * 30) + 80
-        // randomImage = getRandomImage()
-        const camp = new Campground({
-            title: `${descriptors[Math.floor(Math.random() * places.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
-            location: `${cities[random1000].city}, ${cities[random1000].state}`,
-            images: [
-                {
-                  url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352482/YelpCamp/nafidhj8cqevwmcnyndn.jpg',
-                  filename: 'YelpCamp/nafidhj8cqevwmcnyndn',
-                },
-                {
-                  url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352483/YelpCamp/s85dsbsplhjo80uvxdbw.jpg',
-                  filename: 'YelpCamp/s85dsbsplhjo80uvxdbw',
-                }
-              ],
-            author: "6509ca25e66e8833d329c120",
-            price: priceRandom,
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero praesentium iste rerum asperiores hic perspiciatis saepe facere voluptas recusandae molestiae"
-        })
-        await camp.save()
-    }
+  await Campground.deleteMany({});
+  for (let i = 0; i < 50; i++) {
+    const random1000 = Math.floor(Math.random() * 1000)
+    priceRandom = Math.floor(Math.random() * 30) + 80
+    const camp = new Campground({
+      title: `${descriptors[Math.floor(Math.random() * places.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
+      location: `${cities[random1000].city}, ${cities[random1000].state}`,
+      geometry: {
+        type: 'Point',
+        coordinates: [-97.9222112121185, 39.3812661305678]
+      },
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352482/YelpCamp/nafidhj8cqevwmcnyndn.jpg',
+          filename: 'YelpCamp/nafidhj8cqevwmcnyndn',
+        },
+        {
+          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352483/YelpCamp/s85dsbsplhjo80uvxdbw.jpg',
+          filename: 'YelpCamp/s85dsbsplhjo80uvxdbw',
+        }
+      ],
+      author: "6509ca25e66e8833d329c120",
+      price: priceRandom,
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero praesentium iste rerum asperiores hic perspiciatis saepe facere voluptas recusandae molestiae"
+    })
+    await camp.save()
+  }
 }
 
 seedDB().then(() => {
-    mongoose.connection.close()
+  mongoose.connection.close()
 })
+
+// {
+//   "_id": {
+//     "$oid": "651eeb6cb5b47335a65cfeee"
+//   },
+//   "title": "[REDUCTED] Fishing Camp",
+//   "price": 99999,
+//   "description": "this is the best fishing experience you will have in your pointless, miserable life.\r\nYou will learn the secret to catching BEEAAAAASTTTTTTTS with an ancient technique used by our ancestors called [redacted].",
+//   "location": "[REDUCTED]",
+//   "images": [
+//     {
+//       "url": "https://res.cloudinary.com/dzai2rayq/image/upload/v1696525164/YelpCamp/ufoybsacwvrebl7kuogl.jpg",
+//       "filename": "YelpCamp/ufoybsacwvrebl7kuogl",
+//       "_id": {
+//         "$oid": "651eeb6cb5b47335a65cfeef"
+//       }
+//     },
+//     {
+//       "url": "https://res.cloudinary.com/dzai2rayq/image/upload/v1696525163/YelpCamp/tlw2fej4gep4yyzpcvci.png",
+//       "filename": "YelpCamp/tlw2fej4gep4yyzpcvci",
+//       "_id": {
+//         "$oid": "651eeb6cb5b47335a65cfef0"
+//       }
+//     }
+//   ],
+//   "author": {
+//     "$oid": "6509ca25e66e8833d329c120"
+//   },
+//   "__v": 2,
+//   "geometry": {
+//     "type": "Point",
+//     "coordinates": [
+//       "32.736389",
+//       "34.874740"
+//     ]
+//   },
+//   "reviews": [
+//     {
+//       "$oid": "6522c506155bb44fc34fa025"
+//     },
+//     {
+//       "$oid": "6522c513155bb44fc34fa03b"
+//     }
+//   ]
+// }
