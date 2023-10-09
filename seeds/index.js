@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Campground = require("../models/campground")
 const cities = require("./cities")
-const { places, descriptors } = require("./seedHelpers")
+const villages = require("./cyVillages")
+const { places, descriptors } = require("./seedHelpers");
+const { required } = require("joi");
 
 mongoose.connect("mongodb+srv://under:construction@ucdatabase.f09kl.mongodb.net/Yelpcamp")
   .then(() => {
@@ -24,24 +26,28 @@ const getRandomImage = () => {
 
 const seedDB = async () => {
   await Campground.deleteMany({});
-  for (let i = 0; i < 50; i++) {
-    const random1000 = Math.floor(Math.random() * 1000)
+  for (let i = 0; i < 15; i++) {
+    const random1000 = Math.floor(Math.random() * 30)
     priceRandom = Math.floor(Math.random() * 30) + 80
     const camp = new Campground({
       title: `${descriptors[Math.floor(Math.random() * places.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
-      location: `${cities[random1000].city}, ${cities[random1000].state}`,
+      location: `${villages[random1000].village}, ${villages[random1000].district}`,
       geometry: {
         type: 'Point',
-        coordinates: [-97.9222112121185, 39.3812661305678]
+        coordinates: [villages[random1000].longitude, villages[random1000].latitude]
       },
       images: [
         {
-          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352482/YelpCamp/nafidhj8cqevwmcnyndn.jpg',
-          filename: 'YelpCamp/nafidhj8cqevwmcnyndn',
+          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696845423/pexels-photo-2662831_bz5tc1.jpg',
+          filename: 'YelpCamp/pexels-photo-2662831_bz5tc1',
         },
         {
-          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696352483/YelpCamp/s85dsbsplhjo80uvxdbw.jpg',
-          filename: 'YelpCamp/s85dsbsplhjo80uvxdbw',
+          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696845422/pexels-photo-2609954_kvc8rh.jpg',
+          filename: 'YelpCamp/pexels-photo-2609954_kvc8rh',
+        },
+        {
+          url: 'https://res.cloudinary.com/dzai2rayq/image/upload/v1696845380/pexels-photo-1539225_vc2cc8.jpg',
+          filename: 'YelpCamp/pexels-photo-1539225_vc2cc8',
         }
       ],
       author: "6509ca25e66e8833d329c120",
