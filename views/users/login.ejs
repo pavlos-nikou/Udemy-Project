@@ -1,15 +1,27 @@
 <% layout("layouts/boilerplate") %>
-    <h1>Log In</h1>
-    <form action="/login" method="POST" class="validated-form" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username" required value="pavlos">
-            <div class="valid-feedback">Looks Good!!</div>
+
+<div class="container d-flex justify-content-center align-ites-center mt-5">
+    <div class="row flex-fill">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <img src="https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top mb-3" alt="...">
+                    <h5 class="card-title">LogIn</h5>
+                    <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" name="username" id="username" required value="pavlos" autofocus>
+                            <div class="valid-feedback">Looks Good!!</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" name="password" id="password" required value="pavlos">
+                            <div class="valid-feedback">Looks Good!!</div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Log In</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" required value="pavlos">
-            <div class="valid-feedback">Looks Good!!</div>
-        </div>
-        <button type="submit" class="btn btn-success">Log In</button>
-    </form>
+    </div>
+</div>
