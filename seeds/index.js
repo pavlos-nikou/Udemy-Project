@@ -26,15 +26,15 @@ const getRandomImage = () => {
 
 const seedDB = async () => {
   await Campground.deleteMany({});
-  for (let i = 0; i < 15; i++) {
-    const random1000 = Math.floor(Math.random() * 30)
+  for (let i = 0; i < 100; i++) {
+    const random100 = Math.floor(Math.random() * 99)
     priceRandom = Math.floor(Math.random() * 30) + 80
     const camp = new Campground({
       title: `${descriptors[Math.floor(Math.random() * places.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
-      location: `${villages[random1000].village}, ${villages[random1000].district}`,
+      location: `${villages[random100].village}, ${villages[random100].district}`,
       geometry: {
         type: 'Point',
-        coordinates: [villages[random1000].longitude, villages[random1000].latitude]
+        coordinates: [villages[random100].longitude, villages[random100].latitude]
       },
       images: [
         {
