@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -6,6 +10,7 @@ const flash = require("connect-flash");
 const ejsmate = require("ejs-mate");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError");
+const mongoSanitize = require('express-mongo-sanitize');
 
 const mongoose = require("mongoose");
 
@@ -39,12 +44,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride("_method"));
 
+app.use(mongoSanitize())
+
 const sessiosConfig = {
+    "name": "session",
     secret: "thisshouldbeabettersecret!",
     resave: false,
     saveUninitialized: true,
     cookie: {
         http0nly: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
