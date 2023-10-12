@@ -19,7 +19,7 @@
 <body class="d-flex flex-column vh-100">
     <%- include("../partials/navbar") %>
     <%- include("../partials/flash") %>
-    <div id="clusterContainer" class=""> <div id="clusterMap"></div></div>
+    <div crossorigin="anonymous" id="clusterContainer" class=""> <div id="clusterMap"></div></div>
        
         <main class="container mt-2">
             
@@ -28,7 +28,7 @@
                 <div class="card card-index"> 
                     <div class="row">
                         <div class="col-md-4">
-                                <img src="<%= campground.images.length > 0  ? campground.images[0].url : "https://picsum.photos/600/400" %> " alt="" class="img-fluid" style="max-height: 300px;" >
+                                <img crossorigin="anonymous" src="<%= campground.images.length > 0  ? campground.images[0].url : "https://picsum.photos/600/400" %> " alt="" class="img-fluid" style="max-height: 300px;" >
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
