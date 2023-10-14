@@ -26,9 +26,10 @@ const registerRoutes = require('./routes/users');
 // for authentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const MongoDBStore = require('connect-mongo');
 
 // connect to database
-mongoose.connect("mongodb+srv://under:construction@ucdatabase.f09kl.mongodb.net/Yelpcamp")
+mongoose.connect(process.env.DB_URL)
     .then(() => {
         console.log("connected yo db");
     })
@@ -60,7 +61,7 @@ const scriptSrcUrls = [
 ];
 //This is the array that needs added to
 const styleSrcUrls = [
-    
+
     "https://kit-free.fontawesome.com/",
     "https://api.mapbox.com/",
     "https://api.tiles.mapbox.com/",
@@ -75,7 +76,7 @@ const connectSrcUrls = [
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
 ];
-const fontSrcUrls = [];
+const fontSrcUrls = ["https://ka-f.fontawesome.com/"];
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
@@ -91,13 +92,27 @@ app.use(
                 "data:",
                 "https://res.cloudinary.com/dzai2rayq/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
                 "https://images.unsplash.com/",
+                "https://images.pexels.com/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
     })
 );
 
+const store = MongoDBStore.create({
+    mongoUrl: process.env.DB_URL,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
+store.on("error", function (e) {
+    console.log("session error", e);
+})
+
 const sessiosConfig = {
+    store,
     "name": "session",
     secret: "thisshouldbeabettersecret!",
     resave: false,
@@ -127,7 +142,7 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use("/",registerRoutes)
+app.use("/", registerRoutes)
 app.use("/campgrounds", campgroundsRoutes);
 app.use("/campgrounds/:id/review", reviewsRoutes);
 
