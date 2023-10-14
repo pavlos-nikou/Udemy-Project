@@ -1,5 +1,5 @@
 const BaseJoi = require("joi");
-const sanitizeHTML = require('sanitize-HTML');
+const sanitizeHTML = require('sanitize-html');
 
 
 
