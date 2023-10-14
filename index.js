@@ -103,7 +103,7 @@ const store = MongoDBStore.create({
     mongoUrl: process.env.DB_URL,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret: process.env.SECRET
     }
 });
 
@@ -114,7 +114,7 @@ store.on("error", function (e) {
 const sessiosConfig = {
     store,
     "name": "session",
-    secret: "thisshouldbeabettersecret!",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
